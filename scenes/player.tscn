@@ -39,11 +39,12 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_b1jfh"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sp03d"]
 radius = 5.0
+height = 16.0
 
 [node name="Player" type="CharacterBody2D"]
-scale = Vector2(3, 3)
+collision_layer = 2
 script = ExtResource("1_ptvxb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -55,5 +56,5 @@ frame = 2
 frame_progress = 0.781346
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -5)
-shape = SubResource("CircleShape2D_b1jfh")
+position = Vector2(-1, -8)
+shape = SubResource("CapsuleShape2D_sp03d")
