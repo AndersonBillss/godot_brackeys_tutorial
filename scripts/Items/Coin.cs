@@ -12,7 +12,7 @@ public partial class Coin : Area2D
 	{
 	}
 
-	public void OnBodyEntered(Node2D body){
+	public void OnBodyEntered(CollisionObject2D body){
 		GD.Print("+1 coin!");
 		QueueFree();
 	}
