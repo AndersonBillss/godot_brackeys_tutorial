@@ -4,7 +4,7 @@ using System;
 public partial class Player : CharacterBody2D
 {
 	public const float Speed = 100.0f;
-	public const float JumpVelocity = -300.0f;
+	public const float JumpVelocity = -350.0f;
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -21,6 +21,10 @@ public partial class Player : CharacterBody2D
 		{
 			velocity.Y = JumpVelocity;
 		}
+		if (Input.IsActionJustReleased("ui_accept") && Velocity.Y < 0)
+		{
+			velocity.Y *= (float).25;
+		}
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
@@ -33,9 +37,19 @@ public partial class Player : CharacterBody2D
 		{
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 		}
+		if (velocity.X > 0){
+			GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH = false;
+		}
+		if (velocity.X < 0){
+			GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH = true;
+		}
 
 		Velocity = velocity;
 		MoveAndSlide();
 	}
+
+	// public bool isCloseToGround(){
+		
+	// }
 
 }
